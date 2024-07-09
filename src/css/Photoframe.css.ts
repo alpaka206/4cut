@@ -4,6 +4,10 @@ import { style } from "@vanilla-extract/css";
 
 export const Photoframe_Title = style({
   fontSize: "32px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
   "@media": {
     "(max-width: 768px)": {
       //   width: "100%",
@@ -14,24 +18,40 @@ export const Photoframe_Title = style({
   },
 });
 
-export const Photoframe_Top__element = style({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-around",
+export const Photoframe_picked_frame = style({
+  backgroundColor: "#ffffff",
+  width: "550px",
+  height: "300px",
+  margin: "20px 0",
+  "@media": {
+    "(max-width: 768px)": {
+      height: "220px",
+      width: "100%",
+    },
+  },
+});
+
+export const Photoframe_picked_frame_img = style({
   marginTop: "20px",
+  height: "260px",
+  "@media": {
+    "(max-width: 768px)": {
+      height: "180px",
+    },
+  },
 });
 
-export const Photoframe_first = style({
-  width: "70px",
+export const Photoframe_frame_container = style({
+  display: "flex",
+  // alignItems: "center",
+  backgroundColor: "#ffffff",
+  padding: "10px",
 });
-export const Photoframe_third = style({
-  width: "200px",
+export const Photoframe_frame_element = style({
+  width: "21%",
+  height: "21%",
+  padding: "2%",
 });
-
-export const Photoframe_second = style({
-  width: "150px",
-});
-
-export const Photoframe_fourth = style({
-  width: "150px",
+export const Photoframe_frame_element_img = style({
+  width: "100%",
 });

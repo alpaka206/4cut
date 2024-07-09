@@ -1,24 +1,79 @@
-// src/components/ChoosePhoto.tsx
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { photoState } from "./TakePhoto";
+import { photosState } from "../recoilState";
+import { Photoframe_Title } from "../css/Photoframe.css.ts";
+import FirstFrame from "../components/FirstFrame.tsx";
+import SecondFrame from "../components/SecondFrame.tsx";
 
 const ChoosePhoto: React.FC = () => {
-  const photos = useRecoilValue(photoState);
+  const photos = useRecoilValue(photosState);
+  const [selectedPhotos, setSelectedPhotos] = useState<(string | null)[]>([
+    null,
+    null,
+    null,
+    null,
+  ]);
+
+  const togglePhotoSelection = (photoUrl: string) => {
+    const photoIndex = selectedPhotos.indexOf(photoUrl);
+    if (photoIndex !== -1) {
+      // Deselect the photo
+      const newSelectedPhotos = [...selectedPhotos];
+      newSelectedPhotos[photoIndex] = null;
+      setSelectedPhotos(newSelectedPhotos);
+    } else {
+      // Select the photo if there is an empty spot
+      const emptySpotIndex = selectedPhotos.indexOf(null);
+      if (emptySpotIndex !== -1) {
+        const newSelectedPhotos = [...selectedPhotos];
+        newSelectedPhotos[emptySpotIndex] = photoUrl;
+        setSelectedPhotos(newSelectedPhotos);
+      }
+    }
+  };
 
   return (
     <div className="container">
-      <div>선택한 사진들</div>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {photos.map((photoUrl, index) => (
+      <FirstFrame
+        images={[
+          `${selectedPhotos[0]}`,
+          `${selectedPhotos[1]}`,
+          `${selectedPhotos[2]}`,
+          `${selectedPhotos[3]}`,
+        ]}
+      />
+      <SecondFrame
+        images={[
+          `${selectedPhotos[0]}`,
+          `${selectedPhotos[1]}`,
+          `${selectedPhotos[2]}`,
+          `${selectedPhotos[3]}`,
+        ]}
+      />
+      <div className={Photoframe_Title}>사진 선택</div>
+      <div>
+        {photos.images.map((photoUrl, index) => (
           <img
             key={index}
             src={photoUrl}
             alt={`Photo ${index + 1}`}
-            style={{ width: "150px", margin: "10px" }}
+            style={{
+              width: "150px",
+              margin: "10px",
+              border: selectedPhotos.includes(photoUrl)
+                ? "2px solid blue"
+                : "none",
+              cursor: "pointer",
+            }}
+            onClick={() => togglePhotoSelection(photoUrl)}
           />
         ))}
       </div>
+      {selectedPhotos.filter((photo) => photo !== null).length === 4 && (
+        <div style={{ marginTop: "10px", color: "red" }}>
+          최대 4개의 사진을 선택할 수 있습니다.
+        </div>
+      )}
     </div>
   );
 };

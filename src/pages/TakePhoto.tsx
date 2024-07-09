@@ -1,23 +1,47 @@
 // src/components/TakePhoto.tsx
 import React, { useState, useEffect, useRef } from "react";
-import { Photoframe_Title } from "../css/Photoframe.css.ts";
-import { atom, useRecoilState } from "recoil";
+import { Photoframe_TakePhoto } from "../css/TakePhoto.css.ts";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { photosState } from "../recoilState.ts";
 
-// Recoil atom 정의
-export const photoState = atom<string[]>({
-  key: "photoState",
-  default: [],
-});
-
-export default function TakePhoto() {
+const TakePhoto: React.FC = () => {
   const navigate = useNavigate();
-
+  const [takePhotos, setTakePhotos] = useRecoilState(photosState);
   const [count, setCount] = useState(0);
-  const [time, setTime] = useState(10);
+  const [timer, setTimer] = useState(10);
   const webcamRef = useRef<HTMLVideoElement>(null);
-  const intervalIdRef = useRef<number | null>(null); // Ref for intervalId
-  const [photos, setPhotos] = useRecoilState(photoState);
+  const intervalIdRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    setTakePhotos((prevState) => ({
+      ...prevState,
+      images: [],
+    }));
+  }, [setTakePhotos]);
+
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      setTimer((prev) => (prev > 0 ? prev - 1 : 10));
+    }, 1000);
+
+    intervalIdRef.current = window.setInterval(() => {
+      takePicture();
+      setTimer(10);
+      // }, 10000);
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalIdRef.current!);
+      clearInterval(countdown);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (count === 8) {
+      navigate("/ChoosePhoto");
+    }
+  }, [count, navigate]);
 
   const takePicture = () => {
     if (webcamRef.current) {
@@ -27,23 +51,17 @@ export default function TakePhoto() {
       canvas.getContext("2d")?.drawImage(webcamRef.current, 0, 0);
 
       const photoUrl = canvas.toDataURL("image/jpeg");
-      setPhotos((prevPhotos) => [...prevPhotos, photoUrl]);
-      setCount(count + 1);
+      setTakePhotos((prevPhotos) => ({
+        ...prevPhotos,
+        images: [...prevPhotos.images, photoUrl],
+      }));
+      setCount((prevCount) => prevCount + 1);
 
-      if (count === 7) {
-        clearInterval(intervalIdRef.current!); // Stop interval after 8 photos
-        navigate("./ChoosePhoto");
-      }
+      // if (count === 7) {
+      //   clearInterval(intervalIdRef.current!); // Stop interval after 8 photos
+      // }
     }
   };
-
-  useEffect(() => {
-    intervalIdRef.current = window.setInterval(() => {
-      takePicture();
-    }, 10000);
-
-    return () => clearInterval(intervalIdRef.current!); // Clean up interval
-  }, [takePicture]); // Depend on takePicture function
 
   const startCamera = async () => {
     try {
@@ -73,13 +91,17 @@ export default function TakePhoto() {
 
   return (
     <div className="container">
-      <div className={Photoframe_Title}>사진촬영</div>
-      <video
-        ref={webcamRef}
-        autoPlay
-        style={{ display: "block", margin: "10px auto", maxWidth: "100%" }}
-      />
-      <div>타이머: {`${time} 초 남음`}</div>
+      <div>
+        <div className={Photoframe_TakePhoto}>사진촬영 {timer} </div>
+        <video
+          ref={webcamRef}
+          autoPlay
+          style={{ display: "block", margin: "10px auto", maxWidth: "100%" }}
+        />
+        {count}/8
+      </div>
     </div>
   );
-}
+};
+
+export default TakePhoto;
