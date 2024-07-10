@@ -4,6 +4,8 @@ import { photosState } from "../recoilState";
 import { Photoframe_Title } from "../css/Photoframe.css.ts";
 import FirstFrame from "../components/FirstFrame.tsx";
 import SecondFrame from "../components/SecondFrame.tsx";
+import ThirdFrame from "../components/ThirdFrame.tsx";
+import FourthFrame from "../components/FourthFrame.tsx";
 
 const ChoosePhoto: React.FC = () => {
   const photos = useRecoilValue(photosState);
@@ -31,25 +33,59 @@ const ChoosePhoto: React.FC = () => {
       }
     }
   };
-
+  const renderFrame = () => {
+    switch (photos.frame) {
+      case "frame1":
+        return (
+          <FirstFrame
+            images={[
+              `${selectedPhotos[0]}`,
+              `${selectedPhotos[1]}`,
+              `${selectedPhotos[2]}`,
+              `${selectedPhotos[3]}`,
+            ]}
+          />
+        );
+      case "frame2":
+        return (
+          <SecondFrame
+            images={[
+              `${selectedPhotos[0]}`,
+              `${selectedPhotos[1]}`,
+              `${selectedPhotos[2]}`,
+              `${selectedPhotos[3]}`,
+            ]}
+          />
+        );
+      case "frame3":
+        return (
+          <ThirdFrame
+            images={[
+              `${selectedPhotos[0]}`,
+              `${selectedPhotos[1]}`,
+              `${selectedPhotos[2]}`,
+              `${selectedPhotos[3]}`,
+            ]}
+          />
+        );
+      case "frame4":
+        return (
+          <FourthFrame
+            images={[
+              `${selectedPhotos[0]}`,
+              `${selectedPhotos[1]}`,
+              `${selectedPhotos[2]}`,
+              `${selectedPhotos[3]}`,
+            ]}
+          />
+        );
+      default:
+        return null;
+    }
+  };
   return (
     <div className="container">
-      <FirstFrame
-        images={[
-          `${selectedPhotos[0]}`,
-          `${selectedPhotos[1]}`,
-          `${selectedPhotos[2]}`,
-          `${selectedPhotos[3]}`,
-        ]}
-      />
-      <SecondFrame
-        images={[
-          `${selectedPhotos[0]}`,
-          `${selectedPhotos[1]}`,
-          `${selectedPhotos[2]}`,
-          `${selectedPhotos[3]}`,
-        ]}
-      />
+      {renderFrame()}
       <div className={Photoframe_Title}>사진 선택</div>
       <div>
         {photos.images.map((photoUrl, index) => (
