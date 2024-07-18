@@ -2,12 +2,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Photoframe_TakePhoto } from "../css/TakePhoto.css.ts";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { photosState } from "../recoilState.ts";
 
 const TakePhoto: React.FC = () => {
   const navigate = useNavigate();
-  const [takePhotos, setTakePhotos] = useRecoilState(photosState);
+  const setTakePhotos = useSetRecoilState(photosState);
   const [count, setCount] = useState(0);
   const [timer, setTimer] = useState(10);
   const webcamRef = useRef<HTMLVideoElement>(null);
