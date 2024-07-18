@@ -19,7 +19,11 @@ export default function App() {
   }, []);
   return (
     <RecoilRoot>
-      <div className="springStyle"></div> {/* 스프링 노트 스타일을 적용 */}
+      <div className="springStyle">
+        {Array.from({ length: 18 }).map((_, index) => (
+          <div key={index} className="springSegment"></div>
+        ))}
+      </div>
       <div className="redLine"></div>
       <div className="linesStyle"></div> {/* 줄 스타일을 적용 */}
       <div className="container">

@@ -1,10 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
 
-globalStyle("#root", {
-  margin: "0 auto",
-  textAlign: "center",
-});
-
 globalStyle("body", {
   width: "600px",
   minHeight: "100vh",
@@ -37,21 +32,31 @@ globalStyle(".springStyle", {
   left: "20px", // 스프링 위치 조정
   height: "100vh",
   width: "20px", // 스프링 너비 조정
-  backgroundImage: `linear-gradient(
-    to bottom,
-    transparent 0%,
-    transparent 30%,
-    #000 30%,
-    #000 70%,
-    transparent 70%,
-    transparent 100%
-  )`,
-  backgroundSize: "100% 30px", // 스프링 간격 조정
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "space-around",
   "@media": {
     "(max-width: 768px)": {
       left: "15px", // 스프링 위치 조정
     },
   },
+});
+
+globalStyle(".springStyle::before, .springStyle::after", {
+  content: '""',
+  display: "block",
+  width: "10px",
+  height: "10px",
+  backgroundColor: "#000",
+  borderRadius: "50%",
+});
+
+globalStyle(".springSegment", {
+  width: "10px",
+  height: "10px",
+  backgroundColor: "#000",
+  borderRadius: "50%",
 });
 globalStyle(".linesStyle", {
   position: "absolute",
