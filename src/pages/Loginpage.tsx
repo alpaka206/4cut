@@ -1,17 +1,17 @@
 import FilmPhoto from "../components/FilmPhoto";
 import * as styles from "../css/LoginPage.css";
+import * as filmPhotoStyles from "../css/FilmPhoto.css";
 // import { useNavigate } from "react-router-dom";
 
 export default function Loginpage() {
   //   const navigate = useNavigate();
-
+  const rotations = ["0deg", "2deg", "-2deg", "4deg"];
   return (
     <div>
       <div className={styles.LoginTop}>
-        <FilmPhoto date="hi" />
-        <FilmPhoto date="hi" />
-        <FilmPhoto date="hi" />
-        <FilmPhoto date="hi" />
+        {rotations.map((rotate, index) => (
+          <FilmPhoto key={index} date="2023.09.10" rotate={rotate} />
+        ))}
       </div>
       <div className={styles.LoginContainer}>
         <img src="./assets/logo.svg" className={styles.logo} />

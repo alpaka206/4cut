@@ -3,11 +3,16 @@ import { style } from "@vanilla-extract/css";
 export const LoginTop = style({
   display: "flex",
   alignItems: "center",
-  justifyContent: "space-around",
-  margin: "0 5% 20px 10%",
-  padding: "30px",
+  justifyContent: "space-between",
+  marginLeft: "10%",
+  padding: "30px 0",
   // backgroundColor: "#EDEAE0",
   borderRadius: "24px",
+  "@media": {
+    "(max-width: 768px)": {
+      marginLeft: "14%",
+    },
+  },
 });
 
 export const LoginContainer = style({

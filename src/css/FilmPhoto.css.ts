@@ -5,8 +5,11 @@ export const FilmPhoto = style({
   flexDirection: "column",
   backgroundColor: "#F0EDE2",
   width: "20%",
-  height: "88px",
-  padding: "6px 6px 18px 6px",
+  padding: "6px",
+  textAlign: "center",
+  border: " solid 1px ",
+  aspectRatio: "1 / 1",
+  fontSize: "10px",
 });
 export const FilmPhotoElement = style({
   display: "flex",
