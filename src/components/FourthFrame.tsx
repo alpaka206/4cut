@@ -8,7 +8,7 @@ import {
   image2Style,
   image3Style,
   image4Style,
-} from "../css/ThirdFrame.css.ts";
+} from "../css/FourthFrame.css.ts";
 
 interface FourthFrameProps {
   images: (string | undefined)[];

@@ -1,5 +1,6 @@
 // import React from "react";
 import Mainpage from "./pages/Mainpage.tsx";
+import Loginpage from "./pages/Loginpage.tsx";
 import Photoframe from "./pages/Photoframe.tsx";
 import TakePhoto from "./pages/TakePhoto.tsx";
 import ChoosePhoto from "./pages/ChoosePhoto.tsx";
@@ -21,7 +22,8 @@ export default function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Mainpage />} />
+            <Route path="/" element={<Loginpage />} />
+            <Route path="/Mainpage" element={<Mainpage />} />
             <Route path="/Photoframe" element={<Photoframe />} />
             <Route path="/TakePhoto" element={<TakePhoto />} />
             <Route path="/ChoosePhoto" element={<ChoosePhoto />} />

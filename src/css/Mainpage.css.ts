@@ -13,21 +13,6 @@ globalStyle("body", {
   },
 });
 
-globalStyle(".container", {
-  backgroundColor: "#FF8EA2",
-  display: "flex",
-  justifyContent: "center",
-  padding: "40px 0",
-  "@media": {
-    "(max-width: 768px)": {
-      // width: "100%",
-      // padding: "0 10px", // 좌우 여백 줄이기
-      // display: "initial",
-      // flexDirection: "column",
-    },
-  },
-});
-
 export const container_element_left = style({
   width: "44%",
   padding: "0 2% 0 4%", // 좌우 패딩 조정
