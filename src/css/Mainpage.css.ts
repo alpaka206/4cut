@@ -1,17 +1,6 @@
 // Mainpage.css.ts
 
-import { style, globalStyle } from "@vanilla-extract/css";
-
-globalStyle("body", {
-  width: "550px",
-  height: "100vh",
-  margin: "auto",
-  "@media": {
-    "(max-width: 768px)": {
-      width: "100%",
-    },
-  },
-});
+import { style } from "@vanilla-extract/css";
 
 export const container_element_left = style({
   width: "44%",

@@ -1,25 +1,23 @@
-import { style, globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle(".container", {
-  backgroundColor: "#FF8EA2",
-  justifyContent: "center",
-  padding: "40px 0",
-  "@media": {
-    "(max-width: 768px)": {
-      // width: "100%",
-      // padding: "0 10px", // 좌우 여백 줄이기
-      // display: "initial",
-    },
-  },
+export const LoginTop = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-around",
+  margin: "0 5% 20px 10%",
+  padding: "30px",
+  // backgroundColor: "#EDEAE0",
+  borderRadius: "24px",
 });
 
 export const LoginContainer = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  margin: "auto",
-  width: "60%",
-  backgroundColor: "#EDEAE0",
+  marginLeft: "15%",
+  width: "50%",
+  padding: "30px",
+  backgroundColor: "#F0EDE2",
   borderRadius: "24px",
 });
 
