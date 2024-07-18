@@ -8,10 +8,10 @@ export default function Loginpage() {
   return (
     <div>
       <div className={styles.LoginTop}>
-        <FilmPhoto />
-        <FilmPhoto />
-        <FilmPhoto />
-        <FilmPhoto />
+        <FilmPhoto date="hi" />
+        <FilmPhoto date="hi" />
+        <FilmPhoto date="hi" />
+        <FilmPhoto date="hi" />
       </div>
       <div className={styles.LoginContainer}>
         <img src="./assets/logo.svg" className={styles.logo} />
