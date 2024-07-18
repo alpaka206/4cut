@@ -1,6 +1,5 @@
 import FilmPhoto from "../components/FilmPhoto";
 import * as styles from "../css/LoginPage.css";
-import * as filmPhotoStyles from "../css/FilmPhoto.css";
 // import { useNavigate } from "react-router-dom";
 
 export default function Loginpage() {
