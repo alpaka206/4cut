@@ -14,7 +14,7 @@ export const FilmPhoto = style({
 export const FilmPhotoElement = style({
   display: "flex",
   flexDirection: "column",
-  backgroundColor: "#F32512",
+  backgroundColor: "#ffffff",
   width: "100%",
   height: "100%",
 });

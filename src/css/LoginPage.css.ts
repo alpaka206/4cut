@@ -20,10 +20,17 @@ export const LoginContainer = style({
   flexDirection: "column",
   alignItems: "center",
   marginLeft: "15%",
-  width: "50%",
+  width: "calc(150% - 60px)",
+
   padding: "30px",
   backgroundColor: "#F0EDE2",
   borderRadius: "24px",
+  aspectRatio: "1 / 1",
+  "@media": {
+    "(max-width: 768px)": {
+      width: "calc(100% - 60px)",
+    },
+  },
 });
 
 export const logo = style({
@@ -105,4 +112,19 @@ export const decorativeElements = style({
   backgroundImage: "url('path_to_your_decorative_elements_image')",
   backgroundSize: "cover",
   zIndex: -1,
+});
+export const LoginCenter = style({
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+});
+export const LoginCenterFilmPhoto = style({
+  "@media": {
+    "(max-width: 768px)": {
+      display: "none",
+    },
+  },
+});
+export const specialFilmPhoto = style({
+  width: "100%",
 });

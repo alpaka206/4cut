@@ -9,25 +9,39 @@ export default function Loginpage() {
     <div>
       <div className={styles.LoginTop}>
         {rotations.map((rotate, index) => (
-          <FilmPhoto key={index} date="2023.09.10" rotate={rotate} />
+          <FilmPhoto
+            key={index}
+            date="2023.09.10"
+            rotate={rotate}
+            src={`./assets/peopleimage/cat${index + 1}.png`}
+          />
         ))}
       </div>
-      <div className={styles.LoginContainer}>
-        <img src="./assets/logo.svg" className={styles.logo} />
-        <h1 className={styles.title}>Photo Booth</h1>
-        <button className={styles.button}>Google 로그인</button>
+      <div className={styles.LoginCenter}>
+        <div className={styles.LoginContainer}>
+          <img src="./assets/logo.svg" className={styles.logo} />
+          <h1 className={styles.title}>Photo Booth</h1>
+          <button className={styles.button}>Google 로그인</button>
+        </div>
+        <div className={styles.LoginCenterFilmPhoto}>
+          <FilmPhoto
+            date="2023.09.10"
+            rotate="4deg"
+            src={`./assets/peopleimage/dog.png`}
+            className={styles.specialFilmPhoto}
+          />
+        </div>
       </div>
-      {/* <div className={styles.photoSection}>
-        {Array.from({ length: 16 }).map((_, index) => (
-          <div className={styles.photo} key={index}>
-            <img
-              className={styles.photoImg}
-              src={`path_to_photo_${index + 1}`}
-              alt={`Photo ${index + 1}`}
-            />
-          </div>
+      <div className={styles.LoginTop}>
+        {rotations.map((rotate, index) => (
+          <FilmPhoto
+            key={index}
+            date="2023.09.10"
+            rotate={rotate}
+            src={`./assets/peopleimage/love${index + 1}.png`}
+          />
         ))}
-      </div> */}
+      </div>
     </div>
   );
 }
