@@ -5,8 +5,7 @@ export const LoginTop = style({
   alignItems: "center",
   justifyContent: "space-between",
   marginLeft: "10%",
-  padding: "30px 0",
-  // backgroundColor: "#EDEAE0",
+  padding: "45px 0 30px 0",
   borderRadius: "24px",
   "@media": {
     "(max-width: 768px)": {
@@ -118,6 +117,20 @@ export const LoginCenter = style({
   alignItems: "center",
   width: "100%",
 });
+export const LoginBottom = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginLeft: "10%",
+  padding: "30px 0",
+  borderRadius: "24px",
+  "@media": {
+    "(max-width: 768px)": {
+      marginLeft: "14%",
+    },
+  },
+});
+
 export const LoginCenterFilmPhoto = style({
   "@media": {
     "(max-width: 768px)": {
