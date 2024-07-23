@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import FilmPhoto from "../components/FilmPhoto";
 import * as styles from "../css/LoginPage.css";
 import { GoogleLogin, CredentialResponse } from "@react-oauth/google";
