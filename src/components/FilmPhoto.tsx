@@ -5,6 +5,7 @@ interface FilmPhotoProps {
   rotate?: string;
   src: string;
   className?: string;
+  onClick?: () => void;
 }
 
 export default function FilmPhoto({
@@ -12,11 +13,13 @@ export default function FilmPhoto({
   rotate = "0deg",
   src,
   className,
+  onClick,
 }: FilmPhotoProps) {
   // 기본값을 0deg로 설정
   return (
     <div
       className={`${styles.FilmPhoto} ${className}`}
+      onClick={onClick}
       style={{ transform: `rotate(${rotate})` }}
     >
       <img src={src} className={styles.FilmPhotoElement} alt="Logo" />

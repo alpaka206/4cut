@@ -2,14 +2,7 @@
 
 // import React from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Photoframe_Title,
-  Photoframe_picked_frame_img,
-  Photoframe_picked_frame,
-  Photoframe_frame_container,
-  Photoframe_frame_element,
-  Photoframe_frame_element_img,
-} from "../css/Photoframe.css.ts";
+import * as styles from "../css/Photoframe.css";
 import { useRecoilState } from "recoil";
 import { photosState } from "../recoilState.ts";
 
@@ -31,32 +24,30 @@ export default function Photoframe() {
   };
 
   return (
-    <div className="container">
-      <div className={Photoframe_Title}>
-        프레임 선택
-        <div className={Photoframe_picked_frame}>
-          <img
-            className={Photoframe_picked_frame_img}
-            src={`/assets/${chooseFrame.frame}.svg`}
-          />
-        </div>
-        <div className={Photoframe_frame_container}>
-          {frames.map((frame) => (
-            <div
-              key={frame}
-              onClick={() => pickFrame(frame)}
-              className={Photoframe_frame_element}
-            >
-              <img
-                className={Photoframe_frame_element_img}
-                src={`/assets/${frame}.svg`}
-                alt={`Frame ${frame}`}
-              />
-            </div>
-          ))}
-        </div>
-        <div onClick={() => CheckButton()}>확인</div>
+    <div>
+      <div className={styles.Photoframe_picked_frame}>
+        <img
+          className={styles.Photoframe_picked_frame_img}
+          src={`/assets/${chooseFrame.frame}.svg`}
+        />
       </div>
+      프레임 선택
+      <div className={styles.Photoframe_frame_container}>
+        {frames.map((frame) => (
+          <div
+            key={frame}
+            onClick={() => pickFrame(frame)}
+            className={styles.Photoframe_frame_element}
+          >
+            <img
+              className={styles.Photoframe_frame_element_img}
+              src={`/assets/${frame}.svg`}
+              alt={`Frame ${frame}`}
+            />
+          </div>
+        ))}
+      </div>
+      <div onClick={() => CheckButton()}>확인</div>
     </div>
   );
 }

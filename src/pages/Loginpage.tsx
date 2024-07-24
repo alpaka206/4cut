@@ -18,7 +18,8 @@ export default function Loginpage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/google-login",
+        "https://4cutbe.vercel.app/api/users/google-login",
+        // "http://localhost:5000/api/users/google-login",
         {
           token: res.credential,
         }

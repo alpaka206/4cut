@@ -2,27 +2,12 @@
 
 import { style } from "@vanilla-extract/css";
 
-export const Photoframe_Title = style({
-  fontSize: "32px",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  "@media": {
-    "(max-width: 768px)": {
-      //   width: "100%",
-      //   // padding: "0 10px", // 좌우 여백 줄이기
-      //   // display: "initial",
-      //   flexDirection: "column",
-    },
-  },
-});
-
 export const Photoframe_picked_frame = style({
-  backgroundColor: "#ffffff",
-  width: "550px",
-  height: "300px",
-  margin: "20px 0",
+  display: "flex",
+  width: "180px",
+  height: "250px",
+  margin: "auto",
+  marginBottom: "20px",
   "@media": {
     "(max-width: 768px)": {
       height: "220px",
@@ -32,6 +17,7 @@ export const Photoframe_picked_frame = style({
 });
 
 export const Photoframe_picked_frame_img = style({
+  width: "100%",
   marginTop: "20px",
   height: "260px",
   "@media": {

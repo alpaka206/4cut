@@ -2,7 +2,8 @@ import axios from "axios";
 
 // Axios 인스턴스 생성
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://4cutbe.vercel.app/api",
+  // baseURL: "http://localhost:5000/api",
   withCredentials: true,
 });
 

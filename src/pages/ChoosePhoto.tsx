@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { photosState } from "../recoilState";
-import { Photoframe_Title } from "../css/Photoframe.css.ts";
+// import { Photoframe_Title } from "../css/Photoframe.css.ts";
 import FirstFrame from "../components/FirstFrame.tsx";
 import SecondFrame from "../components/SecondFrame.tsx";
 import ThirdFrame from "../components/ThirdFrame.tsx";
@@ -86,7 +86,7 @@ const ChoosePhoto: React.FC = () => {
   return (
     <div className="container">
       {renderFrame()}
-      <div className={Photoframe_Title}>사진 선택</div>
+      <div>사진 선택</div>
       <div>
         {photos.images.map((photoUrl, index) => (
           <img
