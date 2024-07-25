@@ -10,7 +10,7 @@ import {
   image2Style,
   image3Style,
   image4Style,
-} from "../css/SecondFrame.css.ts";
+} from "./SecondFrame.css.ts";
 
 interface SecondFrameProps {
   images: (string | undefined)[];

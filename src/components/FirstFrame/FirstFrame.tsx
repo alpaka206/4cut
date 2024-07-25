@@ -1,9 +1,9 @@
 // src/components/FirstFrame.tsx
 
 import React from "react";
-import { FirstFrame as FirstFrameStyle } from "../css/FirstFrame.css.ts";
+import { FirstFrame as FirstFrameStyle } from "./FirstFrame.css.ts";
 
-interface FirstFrameProps {
+export interface FirstFrameProps {
   images: (string | undefined)[];
 }
 

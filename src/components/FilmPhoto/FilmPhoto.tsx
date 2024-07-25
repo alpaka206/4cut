@@ -1,6 +1,6 @@
-import * as styles from "../css/FilmPhoto.css";
+import * as styles from "./FilmPhoto.css";
 
-interface FilmPhotoProps {
+export interface FilmPhotoProps {
   date: string;
   rotate?: string;
   src: string;
@@ -18,7 +18,7 @@ export default function FilmPhoto({
   // 기본값을 0deg로 설정
   return (
     <div
-      className={`${styles.FilmPhoto} ${className}`}
+      className={`${styles.FilmPhoto} ${className || ""}`}
       onClick={onClick}
       style={{ transform: `rotate(${rotate})` }}
     >

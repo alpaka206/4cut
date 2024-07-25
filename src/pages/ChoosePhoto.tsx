@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { photosState } from "../recoilState";
 // import { Photoframe_Title } from "../css/Photoframe.css.ts";
-import FirstFrame from "../components/FirstFrame.tsx";
-import SecondFrame from "../components/SecondFrame.tsx";
-import ThirdFrame from "../components/ThirdFrame.tsx";
-import FourthFrame from "../components/FourthFrame.tsx";
+import FirstFrame from "../components/FirstFrame/FirstFrame.tsx";
+import SecondFrame from "../components/SecondFrame/SecondFrame.tsx";
+import ThirdFrame from "../components/ThirdFrame/ThirdFrame.tsx";
+import FourthFrame from "../components/FourthFrame/FourthFrame.tsx";
 
 const ChoosePhoto: React.FC = () => {
   const photos = useRecoilValue(photosState);

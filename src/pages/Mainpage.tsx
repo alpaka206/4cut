@@ -1,4 +1,4 @@
-import FilmPhoto from "../components/FilmPhoto.tsx";
+import FilmPhoto from "../components/FilmPhoto/FilmPhoto.tsx";
 import * as styles from "../css/Mainpage.css.ts";
 import { useNavigate } from "react-router-dom";
 

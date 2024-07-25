@@ -2,21 +2,21 @@
 
 import React from "react";
 import {
-  FourthFramePropsStyle,
+  ThirdFramePropsStyle,
   logoStyle,
   image1Style,
   image2Style,
   image3Style,
   image4Style,
-} from "../css/FourthFrame.css.ts";
+} from "./ThirdFrame.css.ts";
 
-interface FourthFrameProps {
+interface ThirdFrameProps {
   images: (string | undefined)[];
 }
 
-const FourthFrame: React.FC<FourthFrameProps> = ({ images }) => {
+const ThirdFrame: React.FC<ThirdFrameProps> = ({ images }) => {
   return (
-    <div className={FourthFramePropsStyle}>
+    <div className={ThirdFramePropsStyle}>
       <img className={logoStyle} src="/assets/logo.svg" alt="logo" />
       {images.map((image, index) =>
         image === undefined ? (
@@ -30,10 +30,10 @@ const FourthFrame: React.FC<FourthFrameProps> = ({ images }) => {
               index === 0
                 ? image1Style
                 : index === 1
-                ? image2Style
-                : index === 2
-                ? image3Style
-                : image4Style
+                  ? image2Style
+                  : index === 2
+                    ? image3Style
+                    : image4Style
             }
           />
         )
@@ -42,4 +42,4 @@ const FourthFrame: React.FC<FourthFrameProps> = ({ images }) => {
   );
 };
 
-export default FourthFrame;
+export default ThirdFrame;
