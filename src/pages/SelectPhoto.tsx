@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useRecoilValue } from "recoil";
-import { photosState } from "../recoilState";
-// import { Photoframe_Title } from "../css/Photoframe.css.ts";
+import { photosState } from "../recoilState.ts";
 import FirstFrame from "../components/FirstFrame/FirstFrame.tsx";
 import SecondFrame from "../components/SecondFrame/SecondFrame.tsx";
 import ThirdFrame from "../components/ThirdFrame/ThirdFrame.tsx";
 import FourthFrame from "../components/FourthFrame/FourthFrame.tsx";
+import { useNavigate } from "react-router-dom";
+import html2canvas from "html2canvas";
 
-const ChoosePhoto: React.FC = () => {
+const SelectPhoto: React.FC = () => {
+  const navigate = useNavigate();
+  const frameRef = useRef<HTMLDivElement | null>(null);
+
   const photos = useRecoilValue(photosState);
   const [selectedPhotos, setSelectedPhotos] = useState<(string | null)[]>([
     null,
@@ -33,6 +37,7 @@ const ChoosePhoto: React.FC = () => {
       }
     }
   };
+
   const renderFrame = () => {
     switch (photos.frame) {
       case "frame1":
@@ -83,9 +88,19 @@ const ChoosePhoto: React.FC = () => {
         return null;
     }
   };
+
+  const handleCheckButtonClick = () => {
+    if (frameRef.current) {
+      html2canvas(frameRef.current).then((canvas) => {
+        const imgDataUrl = canvas.toDataURL("image/png");
+        navigate("/ImageDownload", { state: { imgDataUrl } });
+      });
+    }
+  };
+
   return (
     <div className="container">
-      {renderFrame()}
+      <div ref={frameRef}>{renderFrame()}</div>
       <div>사진 선택</div>
       <div>
         {photos.images.map((photoUrl, index) => (
@@ -110,8 +125,9 @@ const ChoosePhoto: React.FC = () => {
           최대 4개의 사진을 선택할 수 있습니다.
         </div>
       )}
+      <div onClick={handleCheckButtonClick}> 선택 완료</div>
     </div>
   );
 };
 
-export default ChoosePhoto;
+export default SelectPhoto;

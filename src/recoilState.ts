@@ -7,6 +7,7 @@ import { atom } from "recoil";
 
 type PhotosState = {
   frame: string;
+  actionType: string;
   images: string[];
 };
 
@@ -15,6 +16,7 @@ export const photosState = atom<PhotosState>({
   key: "photosState",
   default: {
     frame: "frame1",
+    actionType: "",
     images: [],
   },
 });

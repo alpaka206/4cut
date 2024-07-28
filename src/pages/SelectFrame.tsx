@@ -2,13 +2,13 @@
 
 // import React from "react";
 import { useNavigate } from "react-router-dom";
-import * as styles from "../css/Photoframe.css";
+import * as styles from "../css/SelectFrame.css.ts";
 import { useRecoilState } from "recoil";
 import { photosState } from "../recoilState.ts";
 
 const frames = ["frame1", "frame2", "frame3", "frame4"];
 
-export default function Photoframe() {
+export default function SelectFrame() {
   const navigate = useNavigate();
   const [chooseFrame, setChooseFrame] = useRecoilState(photosState);
 
@@ -20,7 +20,7 @@ export default function Photoframe() {
     //  navigate("/takephoto"); // 선택 후 다른 페이지로 이동
   };
   const CheckButton = () => {
-    navigate("/takephoto"); // 선택 후 다른 페이지로 이동
+    navigate("/ChooseTheme"); // 선택 후 다른 페이지로 이동
   };
 
   return (

@@ -7,7 +7,7 @@ import axios from "axios";
 import RegisterNickname from "./RegisterNickname";
 import { useNavigate } from "react-router-dom";
 
-export default function Loginpage() {
+export default function LoginPage() {
   const navigate = useNavigate();
   const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
   const rotations = ["0deg", "2deg", "-2deg", "4deg"];

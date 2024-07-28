@@ -1,8 +1,8 @@
 import FilmPhoto from "../components/FilmPhoto/FilmPhoto.tsx";
-import * as styles from "../css/Mainpage.css.ts";
+import * as styles from "../css/MainPage.css.ts";
 import { useNavigate } from "react-router-dom";
 
-export default function Mainpage() {
+export default function MainPage() {
   const navigate = useNavigate();
 
   return (
