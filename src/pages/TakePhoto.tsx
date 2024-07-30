@@ -1,4 +1,3 @@
-// src/components/TakePhoto.tsx
 import React, { useState, useEffect, useRef } from "react";
 import { Photoframe_TakePhoto } from "../css/TakePhoto.css.ts";
 import { useNavigate } from "react-router-dom";
@@ -12,11 +11,14 @@ const TakePhoto: React.FC = () => {
   const [timer, setTimer] = useState(10);
   const webcamRef = useRef<HTMLVideoElement>(null);
   const intervalIdRef = useRef<number | null>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const recordedChunksRef = useRef<Blob[]>([]);
 
   useEffect(() => {
     setTakePhotos((prevState) => ({
       ...prevState,
       images: [],
+      videos: [],
     }));
   }, [setTakePhotos]);
 
@@ -27,19 +29,23 @@ const TakePhoto: React.FC = () => {
 
     intervalIdRef.current = window.setInterval(() => {
       takePicture();
+      stopRecording();
       setTimer(10);
-      // }, 10000);
-    }, 1000);
+      if (count < 7) {
+        startRecording();
+      }
+    }, 10000);
 
     return () => {
       clearInterval(intervalIdRef.current!);
       clearInterval(countdown);
     };
-  }, []);
+  }, [count]);
 
   useEffect(() => {
     if (count === 8) {
-      navigate("/ChoosePhoto");
+      // stopRecording();
+      navigate("/SelectPhoto");
     }
   }, [count, navigate]);
 
@@ -56,10 +62,6 @@ const TakePhoto: React.FC = () => {
         images: [...prevPhotos.images, photoUrl],
       }));
       setCount((prevCount) => prevCount + 1);
-
-      // if (count === 7) {
-      //   clearInterval(intervalIdRef.current!); // Stop interval after 8 photos
-      // }
     }
   };
 
@@ -69,6 +71,8 @@ const TakePhoto: React.FC = () => {
       if (webcamRef.current) {
         webcamRef.current.srcObject = stream;
       }
+      startRecording();
+      // startRecording(stream);
     } catch (error) {
       console.error("Error accessing webcam:", error);
     }
@@ -81,6 +85,54 @@ const TakePhoto: React.FC = () => {
     }
   };
 
+  const startRecording = () => {
+    if (webcamRef.current) {
+      const stream = webcamRef.current.srcObject as MediaStream;
+      const options = { mimeType: "video/webm; codecs=vp9" };
+      const mediaRecorder = new MediaRecorder(stream, options);
+      mediaRecorderRef.current = mediaRecorder;
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          recordedChunksRef.current.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(recordedChunksRef.current, {
+          type: "video/webm",
+        });
+        const videoUrl = URL.createObjectURL(blob);
+        setTakePhotos((prevPhotos) => ({
+          ...prevPhotos,
+          videos: [...prevPhotos.videos, videoUrl],
+        }));
+        recordedChunksRef.current = [];
+      };
+
+      mediaRecorder.start();
+    }
+  };
+
+  // const stopRecording = () => {
+  //   if (mediaRecorderRef.current) {
+  //     mediaRecorderRef.current.stop();
+  //     const blob = new Blob(recordedChunksRef.current, {
+  //       type: "video/webm",
+  //     });
+  //     const videoUrl = URL.createObjectURL(blob);
+  //     setTakePhotos((prevPhotos) => ({
+  //       ...prevPhotos,
+  //       videos: [...prevPhotos.videos, videoUrl],
+  //     }));
+  //     console.log(videoUrl);
+  //   }
+  // };
+  const stopRecording = () => {
+    if (mediaRecorderRef.current) {
+      mediaRecorderRef.current.stop();
+    }
+  };
   useEffect(() => {
     startCamera();
 

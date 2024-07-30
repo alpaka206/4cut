@@ -100,6 +100,19 @@ const SelectPhoto: React.FC = () => {
 
   return (
     <div className="container">
+      <div>
+        <h2>녹화된 동영상</h2>
+        {photos.videos.map((videoUrl, index) => (
+          <video
+            key={index}
+            controls
+            style={{ display: "block", margin: "10px auto", maxWidth: "100%" }}
+          >
+            <source src={videoUrl} type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        ))}
+      </div>
       <div ref={frameRef}>{renderFrame()}</div>
       <div>사진 선택</div>
       <div>

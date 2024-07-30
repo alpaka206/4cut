@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import FirstFrame, { FirstFrameProps } from "./FirstFrame";
 import "./FirstFrame.css";

@@ -17,10 +17,9 @@ export default function SelectFrame() {
       ...prevFrame,
       frame: frameSrc,
     }));
-    //  navigate("/takephoto"); // 선택 후 다른 페이지로 이동
   };
   const CheckButton = () => {
-    navigate("/ChooseTheme"); // 선택 후 다른 페이지로 이동
+    navigate("/SelectTheme"); // 선택 후 다른 페이지로 이동
   };
 
   return (

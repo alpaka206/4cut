@@ -14,7 +14,7 @@ export default function LoginPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSuccess = async (res: CredentialResponse) => {
-    console.log(res);
+    // console.log(res);
 
     try {
       const response = await axios.post(
